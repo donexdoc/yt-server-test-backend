@@ -15,8 +15,24 @@
 ## Команды для тестирования
 
 ```sh
-# один экземпляр
-docker compose up --build
+# установка docker
+sudo dnf remove docker \
+        docker-client \
+        docker-client-latest \
+        docker-common \
+        docker-latest \
+        docker-latest-logrotate \
+        docker-logrotate \
+        docker-engine
+
+sudo dnf config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+sudo dnf install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+sudo systemctl start docker
+sudo systemctl enable docker
+
+
+# запуск одного экземпляра приложения
+docker compose up --build -d
 
 # 4 экземпляра
 APP_INSTANCES=4 CPU_LIMIT=0.95 MEMORY_LIMIT=2G docker compose up --build --scale app=4
