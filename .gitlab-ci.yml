@@ -8,9 +8,9 @@ deploy:
     HOST: 192.168.1.40
     USERNAME: donex
   stage: deploy
-  image: debian:bookworm-slim
+  image: alpine:latest
   before_script:
-    - apt update && apt install -y openssh-client git
+    - apk add --no-cache openssh git
     - mkdir -p ~/.ssh
     - echo "$SSH_PRIVATE_KEY_B64" | base64 -d > ~/.ssh/id_ed25519
     - chmod 600 ~/.ssh/id_ed25519
