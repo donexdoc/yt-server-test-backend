@@ -1,7 +1,6 @@
 // server.js
 import express from "express";
 import { runAllTests } from "./tests.js";
-import { version } from "react";
 
 const app = express();
 const port = 3000;
