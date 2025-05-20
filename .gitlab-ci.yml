@@ -14,7 +14,7 @@ deploy:
     - ssh-keyscan -H "$DEPLOY_HOST" >> ~/.ssh/known_hosts
   script:
     - ssh -i ~/.ssh/id_ed25519 "$DEPLOY_USER@$DEPLOY_HOST" '
-      cd "$DEPLOY_DIR" && git pull origin main && ...
+      cd "$DEPLOY_DIR" &&
       git pull origin main &&
       docker compose down &&
       docker compose up -d --build
