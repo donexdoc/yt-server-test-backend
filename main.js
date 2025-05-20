@@ -1,6 +1,7 @@
 // server.js
 import express from "express";
 import { runAllTests } from "./tests.js";
+import { version } from "react";
 
 const app = express();
 const port = 3000;
@@ -8,7 +9,11 @@ const port = 3000;
 app.get("/tests", async (req, res) => {
   try {
     const results = await runAllTests();
-    res.json({ ...results, message: "All tests completed successfully!" });
+    res.json({
+      ...results,
+      message: "All tests completed successfully!",
+      version: "1.0.0",
+    });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
