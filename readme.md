@@ -38,6 +38,16 @@ docker compose up --build -d
 APP_INSTANCES=4 CPU_LIMIT=0.95 MEMORY_LIMIT=2G docker compose up --build --scale app=4
 ```
 
+## Тестирование autocannon
+
+```sh
+autocannon -c 200 -d 60 -p 10 -j http://localhost:3000 > results.json
+# -c 200 - 200 одновременных соединений
+# -d 60 - тест длится 60 секунд
+# -p 10 - 10 секунд ожидания перед замерами (для стабилизации)
+# -j - вывод в формате json
+```
+
 ## Тестирование sysbench
 
 ```sh
