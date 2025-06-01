@@ -40,12 +40,24 @@ sudo dnf install docker-ce docker-ce-cli containerd.io docker-buildx-plugin dock
 sudo systemctl start docker
 sudo systemctl enable docker
 
+# инициализация swarm
+docker swarm init
+
+# билд образа
+docker build -t server-test .
 
 # запуск одного экземпляра приложения
-docker compose up --build -d
+docker stack deploy -c docker-compose.stack.yml mystack
 
 # 4 экземпляра
-APP_INSTANCES=4 CPU_LIMIT=0.95 MEMORY_LIMIT=2G docker compose up --build --scale app=4
+docker swarm init
+APP_INSTANCES=4 CPU_LIMIT=0.95 MEMORY_LIMIT=2G docker stack deploy -c docker-compose.stack.yml mystack
+
+# статус сервисов
+docker service ls
+
+# проверка реплик
+docker service ps mystack_app
 ```
 
 ## Тестирование autocannon

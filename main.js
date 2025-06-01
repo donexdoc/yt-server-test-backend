@@ -1,9 +1,12 @@
-// server.js
 import express from "express";
 import { runAllTests } from "./tests.js";
 
 const app = express();
 const port = 3000;
+
+app.get("/health", (req, res) => {
+  res.status(200).send("OK");
+});
 
 app.get("/tests", async (req, res) => {
   try {
