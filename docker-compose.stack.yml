@@ -21,7 +21,10 @@ services:
   nginx:
     image: nginx:alpine
     ports:
-      - "80:80"
+      - target: 80
+        published: 80
+        protocol: tcp
+        mode: host
     configs:
       - source: nginx_conf
         target: /etc/nginx/nginx.conf
