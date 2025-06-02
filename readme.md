@@ -43,6 +43,8 @@ sudo systemctl enable docker
 # инициализация swarm
 docker swarm init
 
+docker config create nginx_conf ./nginx.conf
+
 # билд образа
 docker build -t server-test .
 
