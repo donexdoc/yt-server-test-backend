@@ -9,11 +9,11 @@ services:
       resources:
         limits:
           cpus: "${CPU_LIMIT:-0.75}"
-          memory: "${MEMORY_LIMIT:-512M}"
+          memory: "${MEMORY_LIMIT:-1G}"
     networks:
       - app_network
     healthcheck:
-      test: ["CMD", "nc", "-z", "http://localhost:3000/health"]
+      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
       interval: 10s
       timeout: 5s
       retries: 3
