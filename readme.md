@@ -57,7 +57,7 @@ docker stack rm mystack
 
 # 4 экземпляра
 docker swarm init
-APP_INSTANCES=4 CPU_LIMIT=0.95 MEMORY_LIMIT=2G docker stack deploy -c docker-compose.stack.yml mystack
+APP_INSTANCES=4 MEMORY_LIMIT=2G docker stack deploy -c docker-compose.stack.yml mystack
 
 # статус сервисов
 docker service ls
@@ -69,7 +69,7 @@ docker service ps mystack_app
 ## Тестирование autocannon
 
 ```sh
-autocannon -c 200 -d 60 -p 10 -j http://localhost:3000 > results.json
+autocannon -c 200 -d 60 -p 10 -j http://localhost:3000/tests > results.json
 # -c 200 - 200 одновременных соединений
 # -d 60 - тест длится 60 секунд
 # -p 10 - 10 секунд ожидания перед замерами (для стабилизации)

@@ -1,0 +1,9 @@
+{
+  "cpu": { "time": 3.939599, "result": 666666166.4588418 },
+  "memory": { "time": 11.75561, "result": 0 },
+  "disk": { "time": 9.966063, "result": 10485760 },
+  "network": { "time": 237.421378, "result": 2000 },
+  "total": { "time": 263.166037 },
+  "message": "All tests completed successfully!",
+  "version": "1.0.0"
+}
