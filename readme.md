@@ -47,7 +47,11 @@ docker swarm init
 docker build -t server-test .
 
 # запуск одного экземпляра приложения
-docker stack deploy -c docker-compose.stack.yml mystack
+APP_INSTANCES=1 MEMORY_LIMIT=1G docker stack deploy -c docker-compose.stack.yml mystack
+
+# остановка swarm
+docker stack rm mystack
+# подождать секунд 5
 
 # 4 экземпляра
 docker swarm init
